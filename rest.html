@@ -1,0 +1,23 @@
+
+dockerfile
+FROM httpd:2.4
+
+COPY index.html /usr/local/apache2/htdocs/index.html
+
+EXPOSE 9876
+
+CMD ["httpd", "-D", "FOREGROUND"]
+
+
+bash
+docker swarm init
+
+docker service create --replicas 5 --name restaurant-website -p 9876:80 httpd:2.4
+
+
+
+docker service ls
+
+ID                  NAME                   MODE                REPLICAS   IMAGE                                                PORTS
+z62x4797n472   restaurant-website   replicated          5/5         httpd:2.4                                                    9876/tcp
+ 

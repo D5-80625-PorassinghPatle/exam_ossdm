@@ -1,0 +1,36 @@
+2. Create a docker image for the website using httpd image - 
+
+3. Create a docker swarm one node cluster - 
+
+4. create a docker service to start 5 containers for the image 
+
+5. Make sure that the website is available on port 9876 port - 
+
+commands in linux
+# Create a docker image for the website using httpd image
+
+
+docker build -t my-httpd-image .
+
+
+# Create a docker swarm one node cluster
+
+
+docker swarm init
+
+
+# create a docker service to start 5 containers for the image
+
+
+docker service create --replicas 5 --name my-httpd-service my-httpd-image
+
+
+# Make sure that the website is available on port 9876 port
+
+
+docker service inspect my-httpd-service
+
+
+The output should show that the service is running and that the port is 9876.
+
+You can also check the website by opening a browser and navigating to http://localhost:9876.
